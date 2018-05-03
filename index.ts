@@ -28,6 +28,10 @@ const globalTestFunctions: TestFunctions = {
 	get beforeEach() { return (<any>global).beforeEach; },
 	get afterEach() { return (<any>global).afterEach; }
 };
+	 
+interface MochaTsDone {	
+    (error?: any): any;	
+}	
 
 // key => Symbol("mocha-typescript:" + key)
 let nodeSymbol = key => "__mts_" + key;
@@ -46,13 +50,13 @@ let handled = nodeSymbol("handled");
 
 interface SuiteCtor {
 	prototype: SuiteProto;
-	before?: (done?: MochaDone) => void;
-	after?: (done?: MochaDone) => void;
+	before?: (done?: MochaTsDone) => void;
+	after?: (done?: MochaTsDone) => void;
 	new();
 }
 interface SuiteProto {
-	before?: (done?: MochaDone) => void;
-	after?: (done?: MochaDone) => void;
+	before?: (done?: MochaTsDone) => void;
+	after?: (done?: MochaTsDone) => void;
 }
 
 export interface SuiteTrait {
