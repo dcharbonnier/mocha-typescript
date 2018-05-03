@@ -44,10 +44,6 @@ let isTraitSymbol = nodeSymbol("isTrait");
 let contextSymbol = nodeSymbol("context");
 let handled = nodeSymbol("handled");
 
-interface MochaDone {
-    (error?: any): any;
-}
-
 interface SuiteCtor {
 	prototype: SuiteProto;
 	before?: (done?: MochaDone) => void;
